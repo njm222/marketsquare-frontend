@@ -7,8 +7,16 @@
         <p class="landing-subtitle" v-html="landingSubtitle"></p>
       </div>
       <div class="banner-quote">
-        <div>"{{landingQuote}}"</div>
-        <div class="quote-author">{{landingAuthor}}</div>
+        <v-carousel cycle
+                    hide-delimiters
+                    :show-arrows=false
+                    height="auto"
+        >
+          <v-carousel-item v-for="quote in landingQuotes">
+            <div class="quote">"{{quote.quoteText}}"</div>
+            <div class="quote-author">{{quote.quoteAuthor}}</div>
+          </v-carousel-item>
+        </v-carousel>
       </div>
     </v-container>
   </div>
@@ -19,11 +27,14 @@
       name: "TopBanner",
       data () {
         return {
-          landingTitle: 'We Help Lead<br>Customers To Your Business',
-          landingSubtitle: 'Because your growth is our top priority',
           landingQuote: 'Simplicity is the ultimate sophistication.',
           landingAuthor: '-Leonardo Da Vinci'
         }
+      },
+      props: {
+        landingTitle: String,
+        landingSubtitle: String,
+        landingQuotes: Array
       }
     }
 </script>
@@ -49,8 +60,13 @@
   align-self: center;
   font-style: italic;
 }
+.banner-quote .quote {
+  color: #000;
+}
 .banner-quote .quote-author {
-  align-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
   font-weight: bold;
+  color: #000;
 }
 </style>

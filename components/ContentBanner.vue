@@ -7,11 +7,11 @@
     >
       <div class="banner-text">
         <h1 class="banner-title" v-html="title"></h1>
-        <p class="banner-content" v-html="text"></p>
+        <p class="banner-content" v-html="content"></p>
       </div>
       <div class="banner-image">
         image will go here
-        <v-img></v-img>
+        <v-img>{{img}}</v-img>
       </div>
     </v-container>
   </div>
@@ -21,13 +21,10 @@
     export default {
       name: "Banner",
       props: {
-        index: Number
-      },
-      data () {
-        return {
-          title: 'Make your Target Audience<br>Follow you',
-          text: 'Through thorough market analysis we identify who your customers are while showing you how to understand, approach and engage them <br><br> Identifying potential customers, targeting them and converting them to active leads.',
-        }
+        index: Number,
+        title: String,
+        content: String,
+        img: String
       }
     }
 </script>

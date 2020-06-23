@@ -1,0 +1,18 @@
+query Home {
+  home {
+    id
+    landingTitle
+    landingSubtitle
+    landingQuotes {
+      quoteText
+      quoteAuthor
+    }
+    landingBanners {
+      bannerTitle
+      bannerText
+      bannerImage {
+        url
+      }
+    }
+  }
+}

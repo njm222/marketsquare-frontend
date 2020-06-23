@@ -49,7 +49,8 @@ export default {
   */
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/apollo'
   ],
   /*
   ** Nuxt.js modules
@@ -57,6 +58,16 @@ export default {
   modules: [
     '@nuxtjs/pwa'
   ],
+  /*
+  ** apollo module configuration
+  */
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.BACKEND_URL || "http://localhost:1337/graphql"
+      }
+    }
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
