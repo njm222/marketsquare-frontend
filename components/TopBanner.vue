@@ -19,9 +19,9 @@
       name: "TopBanner",
       data () {
         return {
-          landingTitle: 'We help lead<br>customers to your business',
+          landingTitle: 'We Help Lead<br>Customers To Your Business',
           landingSubtitle: 'Because your growth is our top priority',
-          landingQuote: 'Simplicity is the ultimate sophistication',
+          landingQuote: 'Simplicity is the ultimate sophistication.',
           landingAuthor: '-Leonardo Da Vinci'
         }
       }
@@ -43,13 +43,11 @@
   margin-top: 15%;
   max-width: 400px;
 }
-.banner-text .landing-title {
-  text-transform: capitalize;
-}
 .banner-quote {
   display: flex;
   flex-direction: column;
   align-self: center;
+  font-style: italic;
 }
 .banner-quote .quote-author {
   align-self: flex-end;
