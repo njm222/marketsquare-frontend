@@ -2,3 +2,16 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+.v-application {
+  font-family: 'Spectral', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.v-toolbar__title {
+  font-family: 'Jost', sans-serif;
+}
+
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background-color: #FFE000;
+}

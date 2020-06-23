@@ -58,9 +58,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-main>
     <v-navigation-drawer
       v-model="rightDrawer"
@@ -103,15 +101,19 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'Welcome',
+          to: '/landing'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'marketsquare'
     }
   }
 }
 </script>
+
+<style lang="scss">
+  @import "./assets/variables.scss";
+</style>
