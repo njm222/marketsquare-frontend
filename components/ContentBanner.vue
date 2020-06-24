@@ -37,9 +37,12 @@
   background: #FFE500;
 }
 .banner-container {
-  padding: 5em 0;
+  padding: 7em 0;
   display: flex;
   justify-content: space-between;
+}
+.banner-container.right {
+  padding: 5em 0;
 }
 .banner-container.right {
   flex-direction: row-reverse;
