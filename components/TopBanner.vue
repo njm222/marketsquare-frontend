@@ -1,5 +1,6 @@
 <template>
   <div class="top-banner">
+    <CubeThree />
     <v-container class="banner-container"
     >
       <div class="banner-text">
@@ -23,20 +24,24 @@
 </template>
 
 <script>
-    export default {
-      name: "TopBanner",
-      data () {
-        return {
-          landingQuote: 'Simplicity is the ultimate sophistication.',
-          landingAuthor: '-Leonardo Da Vinci'
-        }
-      },
-      props: {
-        landingTitle: String,
-        landingSubtitle: String,
-        landingQuotes: Array
+  import CubeThree from '~/components/CubeThree'
+  export default {
+    components: {
+      CubeThree
+    },
+    name: "TopBanner",
+    data () {
+      return {
+        landingQuote: 'Simplicity is the ultimate sophistication.',
+        landingAuthor: '-Leonardo Da Vinci'
       }
+    },
+    props: {
+      landingTitle: String,
+      landingSubtitle: String,
+      landingQuotes: Array
     }
+  }
 </script>
 
 <style scoped>
@@ -53,6 +58,7 @@
 .banner-text {
   margin-top: 15%;
   max-width: 400px;
+  z-index: 1;
 }
 .banner-quote {
   display: flex;
