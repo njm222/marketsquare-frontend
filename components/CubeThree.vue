@@ -37,7 +37,6 @@
           this.renderer = new THREE.WebGLRenderer()
           this.renderer.setSize(window.innerWidth, window.innerHeight * 6 / 10)
           this.$refs.sceneContainer.appendChild(this.renderer.domElement)
-          //document.body.appendChild(this.renderer.domElement)
           this.camera.position.z = 50
 
           /** Postprocessing setup
@@ -59,6 +58,16 @@
           this.cube.position.set(50, 8, -5)
           this.scene.add(this.cube)
 
+          /** direction of each particle */
+          for (let i = 0; i < this.cube.geometry.vertices.length; i ++)
+          {
+            this.dirs[i] = ({
+              x:(Math.random() * this.particleSpeed)-(this.particleSpeed/2),
+              y:(Math.random() * this.particleSpeed)-(this.particleSpeed/2),
+              z:(Math.random() * this.particleSpeed)-(this.particleSpeed/2)
+            });
+          }
+
           /** Lighting setup */
           const color = 0xFFFFFF;
           const intensity = 1;
@@ -71,7 +80,7 @@
 
           if (!this.exploding) {
             this.cube.rotation.x += 0.01
-            // this.cube.rotation.y += 0.01
+            this.cube.rotation.y += 0.01
           } else {
             this.explode(this.cube)
           }
@@ -80,23 +89,6 @@
         },
         initExplode () {
           this.exploding = !this.exploding
-
-          /** direction of gravity on the particle cloud */
-          const xDir = (this.cube.rotation.x % (Math.PI * 2))
-          const yDir = this.cube.rotation.y % (Math.PI * 2)
-
-          console.log(xDir)
-          console.log(yDir)
-
-          /** direction of each particle */
-          for (let i = 0; i < this.cube.geometry.vertices.length; i ++)
-          {
-            this.dirs[i] = ({
-              x:(Math.random() * this.particleSpeed)-(this.particleSpeed/2),
-              y:((Math.random() - Math.cos(xDir)) * this.particleSpeed)-(this.particleSpeed/2),
-              z:((Math.random() + Math.sin(xDir)) * this.particleSpeed)-(this.particleSpeed/2)
-            });
-          }
         },
         explode (shape) {
           let particleCount = shape.geometry.vertices.length;
