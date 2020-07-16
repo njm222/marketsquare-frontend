@@ -32,7 +32,6 @@
               class="carousel-card"
               color="#FFF"
               elevation=4
-              tile=true
             >
               <div
                 v-for="(banner, index) in item.productItem"
@@ -90,7 +89,7 @@
   color: #000;
 }
 .carousel-card {
-  margin: 0 4vw;
+  margin: 1vh 4vw;
   padding: 3vw 5vw;
   border: 1px solid #000;
 }
