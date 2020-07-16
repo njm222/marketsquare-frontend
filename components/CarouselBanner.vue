@@ -28,8 +28,11 @@
             :key="item.id"
             class="product-carousel"
           >
-            <v-card class="carousel-card"
-                    color="#FFF"
+            <v-card
+              class="carousel-card"
+              color="#FFF"
+              elevation=4
+              tile=true
             >
               <div
                 v-for="(banner, index) in item.productItem"
