@@ -17,6 +17,7 @@
       />
     </div>
     <CarouselBanner v-bind:items="home.productContainer" />
+    <ContactForm />
   </v-layout>
 </template>
 
@@ -26,9 +27,11 @@ import Logo from '~/components/Logo.vue'
 import TopBanner from '~/components/TopBanner'
 import HomeQuery from '~/apollo/queries/home/homeQuery'
 import CarouselBanner from '~/components/CarouselBanner'
+import ContactForm from '~/components/ContactForm'
 
 export default {
   components: {
+    ContactForm,
     CarouselBanner,
     Banner,
     Logo,
