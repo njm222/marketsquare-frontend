@@ -98,6 +98,9 @@ export default {
       }
     }
   },
+  env: {
+    APIURL: process.env.VUE_APP_APIURL
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

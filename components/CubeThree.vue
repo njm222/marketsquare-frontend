@@ -58,7 +58,7 @@
           this.cube.position.set(50, 8, -5)
           this.scene.add(this.cube)
 
-          /** direction of each particle */
+          /** direction vector of each particle */
           for (let i = 0; i < this.cube.geometry.vertices.length; i ++)
           {
             this.dirs[i] = ({

@@ -11,7 +11,8 @@
     <div class="banner" v-for="(banner, index) in home.landingBanners">
       <Banner :index="index" :title="banner.bannerTitle"
               :content="banner.bannerText"
-              :image="banner.bannerImage"
+              v-bind:image="banner.bannerImage"
+              :key="`home-content-banner-${index}`"
       />
     </div>
   </v-layout>

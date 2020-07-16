@@ -10,8 +10,11 @@
         <p class="banner-content" v-html="content"></p>
       </div>
       <div class="banner-image">
-        image will go here
-        <v-img>{{img}}</v-img>
+        <v-img
+          v-if="image && this.APIURL"
+          :src="this.APIURL + image.url"
+          :lazy-src="this.APIURL + image.url"
+        ></v-img>
       </div>
     </v-container>
   </div>
@@ -20,11 +23,18 @@
 <script>
     export default {
       name: "Banner",
+      data () {
+        return {
+          APIURL: process.env.APIURL
+        }
+      },
       props: {
         index: Number,
         title: String,
         content: String,
-        img: String
+        image: {
+          url: String
+        }
       }
     }
 </script>
@@ -39,10 +49,10 @@
 .banner-container {
   padding: 7em 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .banner-container.right {
-  padding: 5em 0;
+  padding: 4em 0;
 }
 .banner-container.right {
   flex-direction: row-reverse;
@@ -51,6 +61,14 @@
   width: 45%;
 }
 .banner-image {
+  width: 30%;
+  margin: -5vw 0;
+
+}
+.banner-container.right .banner-image {
   width: 45%;
+  max-width: 400px;
+  height: 0;
+  margin: -7em 0;
 }
 </style>
