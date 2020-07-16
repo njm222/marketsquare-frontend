@@ -6,6 +6,13 @@
       <div class="banner-text">
         <h1 class="landing-title" v-html="landingTitle"></h1>
         <p class="landing-subtitle" v-html="landingSubtitle"></p>
+        <v-btn
+        rounded
+        raised
+        dark
+        color="#131313">
+          Here's how
+        </v-btn>
       </div>
       <div class="banner-quote">
         <v-carousel cycle

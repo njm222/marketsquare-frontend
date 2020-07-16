@@ -25,6 +25,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
+      color="#FFFF00"
       :clipped-left="clipped"
       fixed
       app
@@ -114,6 +115,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "./assets/variables.scss";
+<style lang="sass">
+@import "./assets/variables.scss"
 </style>
