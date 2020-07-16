@@ -15,6 +15,7 @@
               :key="`home-content-banner-${index}`"
       />
     </div>
+    <CarouselBanner v-bind:items="home.productContainer" />
   </v-layout>
 </template>
 
@@ -23,9 +24,11 @@ import Banner from '~/components/ContentBanner'
 import Logo from '~/components/Logo.vue'
 import TopBanner from '~/components/TopBanner'
 import HomeQuery from '~/apollo/queries/home/homeQuery'
+import CarouselBanner from '~/components/CarouselBanner'
 
 export default {
   components: {
+    CarouselBanner,
     Banner,
     Logo,
     TopBanner

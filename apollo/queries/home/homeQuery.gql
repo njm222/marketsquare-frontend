@@ -14,5 +14,16 @@ query Home {
         url
       }
     }
+    productContainer {
+      id
+      title
+      productItem {
+        bannerTitle
+        bannerText
+        bannerImage {
+          url
+        }
+      }
+    }
   }
 }
