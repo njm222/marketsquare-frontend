@@ -6,6 +6,7 @@
   >
     <TopBanner :landingTitle="home.landingTitle"
                :landingSubtitle="home.landingSubtitle"
+               :landingQuoteIcon="home.quoteIcon"
                :landingQuotes="home.landingQuotes"
     />
     <div class="banner" v-for="(banner, index) in home.landingBanners">

@@ -15,6 +15,14 @@
         </v-btn>
       </div>
       <div class="banner-quote">
+        <v-img
+          v-if="landingQuoteIcon && APIURL"
+          :src="APIURL + landingQuoteIcon.url"
+          :lazy-src="APIURL + landingQuoteIcon.url"
+          width="36"
+        >
+
+        </v-img>
         <v-carousel cycle
                     hide-delimiters
                     :show-arrows=false
@@ -39,13 +47,15 @@
     name: "TopBanner",
     data () {
       return {
-        landingQuote: 'Simplicity is the ultimate sophistication.',
-        landingAuthor: '-Leonardo Da Vinci'
+        APIURL: process.env.APIURL,
       }
     },
     props: {
       landingTitle: String,
       landingSubtitle: String,
+      landingQuoteIcon: {
+        url: String
+      },
       landingQuotes: Array
     }
   }
@@ -71,6 +81,7 @@
   display: flex;
   flex-direction: column;
   align-self: center;
+  align-items: center;
   font-style: italic;
 }
 .banner-quote .quote {

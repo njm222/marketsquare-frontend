@@ -3,6 +3,9 @@ query Home {
     id
     landingTitle
     landingSubtitle
+    quoteIcon {
+      url
+    }
     landingQuotes {
       quoteText
       quoteAuthor
