@@ -1,7 +1,7 @@
 <template>
     <div class="contact-container">
       <div class="contact-title">
-        <h2>We don’t just Think Different<br />We’re Think Better</h2>
+        <h1>We don’t just Think Different<br />We’re Think Better</h1>
       </div>
       <v-form
         ref="form"
@@ -66,7 +66,15 @@
           <v-spacer />
           <v-row>
             <v-col>
-              <v-btn :disabled="!valid" outlined v-bind="size" @click="submit">
+              <v-btn
+                rounded
+                raised
+                dark
+                color="accent"
+                :disabled="!valid"
+                v-bind="size"
+                @click="submit"
+              >
                 send message
               </v-btn>
               {{ formMessage }}
@@ -157,25 +165,14 @@ export default {
 </script>
 
 <style>
-  .contact.v-card__title {
-    margin: 2rem 2em;
-    padding: 0;
-  }
   .contact-container {
     width: 100%;
     margin-top: -5%;
     padding: 10% 5%;
-    background-color: #FFFF00;
+    background-color: #FFE500;
     text-align: center;
   }
   .contact-container form {
     height: 100%;
-  }
-  .contact-container form .container {
-    height: inherit;
-    width: 90%;
-    margin: 0 5%;
-    display: flex;
-    flex-direction: column;
   }
 </style>

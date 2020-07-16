@@ -10,7 +10,8 @@
         rounded
         raised
         dark
-        color="#131313">
+        color="accent"
+        >
           Here's how
         </v-btn>
       </div>
