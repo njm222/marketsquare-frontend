@@ -28,7 +28,7 @@
                     :show-arrows=false
                     height="auto"
         >
-          <v-carousel-item v-for="quote in landingQuotes">
+          <v-carousel-item v-for="quote in landingQuotes" :key="quote.id">
             <div class="quote">"{{quote.quoteText}}"</div>
             <div class="quote-author">{{quote.quoteAuthor}}</div>
           </v-carousel-item>
@@ -54,6 +54,7 @@
       landingTitle: String,
       landingSubtitle: String,
       landingQuoteIcon: {
+        id: String,
         url: String
       },
       landingQuotes: Array
