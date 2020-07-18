@@ -9,14 +9,14 @@
       data() {
         return {
           cube: null,
-          cubeParticles: null,
+          cubeParticles: [],
           composer: null,
           renderer: null,
           scene: null,
           camera: null,
           exploding: false,
           particleSize: 1,
-          particleColour: 0x000000,
+          particleColour: 0x2828FF,
           particleSpeed: 10,
           dirs: [],
           limit: 300,
@@ -37,7 +37,7 @@
           this.renderer = new THREE.WebGLRenderer()
           this.renderer.setSize(window.innerWidth, window.innerHeight * 6 / 10)
           this.$refs.sceneContainer.appendChild(this.renderer.domElement)
-          this.camera.position.z = 50
+          this.camera.position.z = 75
 
           /** Postprocessing setup
           this.composer = EffectComposer( this.renderer );
@@ -46,77 +46,100 @@
           const afterimagePass = new AfterimagePass();
           this.composer.addPass( afterimagePass );
           this.composer.passes[1].uniforms.damp.value = 0.7
-          */
+           */
+
 
           /** Particle setup */
-          const geometry = new THREE.BoxGeometry(15, 15, 15, 50, 50, 50)
-          const material = new THREE.PointsMaterial( {
-            size: this.particleSize,
-            color: this.particleColour
-          });
-          this.cube = new THREE.Points( geometry, material );
-          this.cube.position.set(50, 8, -5)
-          this.scene.add(this.cube)
+          const geometry = new THREE.BoxGeometry(30, 30, 30, 15, 15, 15)
+          const particleGeo = new THREE.BoxBufferGeometry(2, 2, 2)
+          const particleMat = new THREE.MeshLambertMaterial({color: this.particleColour, precision: 'highp' })
+          const particleCube = new THREE.Mesh(particleGeo, particleMat)
+          this.cube = new THREE.Group()
 
-          /** direction vector of each particle */
-          for (let i = 0; i < this.cube.geometry.vertices.length; i ++)
+          for (let i = 0; i < geometry.vertices.length; i ++)
           {
+            /** create each particleCube */
+            const shape = particleCube.clone()
+            const vertex = geometry.vertices[i]
+            shape.position.set(vertex.x, vertex.y, vertex.z)
+            this.cubeParticles.push(shape)
+            this.cube.add(shape)
+
+            /** direction vector of each particle */
             this.dirs[i] = ({
               x:(Math.random() * this.particleSpeed)-(this.particleSpeed/2),
               y:(Math.random() * this.particleSpeed)-(this.particleSpeed/2),
               z:(Math.random() * this.particleSpeed)-(this.particleSpeed/2)
             });
           }
+          this.cube.position.set(window.innerWidth * 5 / 100, 5, -5)
+          this.scene.add(this.cube)
 
           /** Lighting setup */
           const color = 0xFFFFFF;
           const intensity = 1;
           const light = new THREE.DirectionalLight(color, intensity);
+          const ambiLight = new THREE.AmbientLight(0x404040)
           light.position.set(2, 5, 4);
           this.scene.add(light);
+          this.scene.add(ambiLight);
         },
         animate () {
           requestAnimationFrame(this.animate)
-
           if (!this.exploding) {
             this.cube.rotation.x += 0.01
             this.cube.rotation.y += 0.01
           } else {
             this.explode(this.cube)
           }
+          requestAnimationFrame(this.animate)
           //this.composer.render(this.scene, this.camera)
           this.renderer.render(this.scene, this.camera)
         },
         initExplode () {
           this.exploding = !this.exploding
         },
-        explode (shape) {
-          let particleCount = shape.geometry.vertices.length;
+        explode () {
+          let particleCount = this.cubeParticles.length;
           while(particleCount-- > 0) {
-            const particle =  shape.geometry.vertices[particleCount]
+            const particle =  this.cubeParticles[particleCount]
             if (this.interval >= 100) {
-              particle.x -= this.dirs[particleCount].x;
-              particle.y -= this.dirs[particleCount].y;
-              particle.z -= this.dirs[particleCount].z;
+              particle.position.x -= this.dirs[particleCount].x
+              particle.position.y -= this.dirs[particleCount].y
+              particle.position.z -= this.dirs[particleCount].z
+              particle.rotation.x -= this.dirs[particleCount].x / 10
+              particle.rotation.z -= this.dirs[particleCount].z / 10
             } else if ( this.interval < 80) {
-              particle.x += this.dirs[particleCount].x;
-              particle.y += this.dirs[particleCount].y;
-              particle.z += this.dirs[particleCount].z;
+              particle.position.x += this.dirs[particleCount].x
+              particle.position.y += this.dirs[particleCount].y
+              particle.position.z += this.dirs[particleCount].z
+              particle.rotation.x += this.dirs[particleCount].x / 10
+              particle.rotation.z += this.dirs[particleCount].z / 10
               // add gravity
             }
           }
-          shape.geometry.verticesNeedUpdate = true;
           this.interval++
           if (this.interval >= 180) {
             // reset interval
             this.interval = 0
             this.exploding = false
           }
+        },
+        resizeCanvas () {
+          window.addEventListener('resize', re => {
+            const width = window.innerWidth
+            const height = window.innerHeight * 6 / 10
+            this.camera.aspect = width / height
+            this.renderer.setSize(width, height)
+            this.renderer.setPixelRatio(window.devicePixelRatio)
+            this.camera.updateProjectionMatrix()
+          })
         }
       },
       mounted () {
         this.init()
         this.animate()
+        this.resizeCanvas()
       }
     }
 </script>
