@@ -1,89 +1,101 @@
 <template>
-    <div class="contact-container">
+    <v-container class="contact-container">
       <div class="contact-title">
-        <h1>We don’t just Think Different<br />We’re Think Better</h1>
+        <h1>We don’t just Think Different<br />We Think Better</h1>
       </div>
-      <v-form
-        ref="form"
-        v-model="valid"
-        lazy-validation
-      >
-        <v-container>
-          <v-spacer />
-          <v-row>
-            <v-col>
-              <v-text-field
-                v-model="firstname"
-                :rules="nameRules"
-                :counter="20"
-                label="First name"
-                required
-              />
-            </v-col>
-            <v-col>
-              <v-text-field
-                v-model="lastname"
-                :rules="nameRules"
-                :counter="20"
-                label="Last name"
-                required
-              />
-            </v-col>
-          </v-row>
-          <v-spacer />
-          <v-row>
-            <v-col>
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="E-mail"
-                required
-              />
-            </v-col>
-            <v-col>
-              <v-text-field
-                v-model="subject"
-                :rules="subjectRules"
-                :counter="30"
-                label="Subject"
-                required
-              />
-            </v-col>
-          </v-row>
-          <v-spacer />
-          <v-row>
-            <v-col>
-              <v-textarea
-                v-model="message"
-                :rules="messageRules"
-                :counter="750"
-                label="Message"
-                required
-                auto-grow
-              />
-            </v-col>
-          </v-row>
-          <v-spacer />
-          <v-row>
-            <v-col>
-              <v-btn
-                rounded
-                raised
-                dark
-                color="accent"
-                :disabled="!valid"
-                v-bind="size"
-                @click="submit"
-              >
-                send message
-              </v-btn>
-              {{ formMessage }}
-            </v-col>
-          </v-row>
-          <v-spacer />
-        </v-container>
-      </v-form>
-    </div>
+      <v-card raised elevation="4" class="contact-form-card">
+        <v-form
+          ref="form"
+          v-model="valid"
+          lazy-validation
+        >
+          <v-container>
+            <v-spacer />
+            <v-row>
+              <v-col>
+                <v-text-field
+                  v-model="firstname"
+                  :rules="nameRules"
+                  :counter="20"
+                  label="First name"
+                  color="accent"
+                  required
+                />
+              </v-col>
+              <v-col>
+                <v-text-field
+                  v-model="lastname"
+                  :rules="nameRules"
+                  :counter="20"
+                  label="Last name"
+                  color="accent"
+                  required
+                />
+              </v-col>
+            </v-row>
+            <v-spacer />
+            <v-row>
+              <v-col>
+                <v-text-field
+                  v-model="email"
+                  :rules="emailRules"
+                  label="E-mail"
+                  color="accent"
+                  required
+                />
+              </v-col>
+              <v-col>
+                <v-text-field
+                  v-model="subject"
+                  :rules="subjectRules"
+                  :counter="30"
+                  label="Subject"
+                  color="accent"
+                  required
+                />
+              </v-col>
+            </v-row>
+            <v-spacer />
+            <v-row>
+              <v-col>
+                <v-textarea
+                  v-model="message"
+                  :rules="messageRules"
+                  :counter="750"
+                  label="Message"
+                  rows="1"
+                  color="accent"
+                  required
+                  auto-grow
+                />
+              </v-col>
+            </v-row>
+            <v-spacer />
+            <v-row>
+              <v-col>
+                <v-btn
+                  rounded
+                  raised
+                  dark
+                  color="accent"
+                  :disabled="!valid"
+                  v-bind="size"
+                  @click="submit"
+                >
+                  send message
+                </v-btn>
+              </v-col>
+            </v-row>
+            <v-row v-if="formMessage">
+              <v-col>
+                {{ formMessage }}
+              </v-col>
+            </v-row>
+            <v-spacer />
+          </v-container>
+        </v-form>
+      </v-card>
+    </v-container>
 </template>
 
 <script>
@@ -166,13 +178,11 @@ export default {
 
 <style>
   .contact-container {
-    width: 100%;
-    margin-top: -5%;
-    padding: 10% 5%;
-    background-color: #FFE500;
+    margin: 5vh 0;
     text-align: center;
   }
-  .contact-container form {
-    height: 100%;
+  .contact-form-card {
+    margin: 2vh 10vw;
+    padding: 2vh 5vw;
   }
 </style>

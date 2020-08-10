@@ -6,7 +6,7 @@
                  v-bind:class="{ right: index % 2 === 1 }"
     >
       <div class="banner-text">
-        <h1 class="banner-title" v-html="title"></h1>
+        <div class="banner-title text-h5 py-4" v-html="title"></div>
         <p class="banner-content" v-html="content"></p>
       </div>
       <div class="banner-image">
@@ -42,33 +42,28 @@
 <style scoped>
 .banner {
   width: 100%;
-}
-.banner.right {
-  background: #FFE500;
+  height: 50vh;
 }
 .banner-container {
-  padding: 7em 0;
   display: flex;
   justify-content: space-around;
 }
-.banner-container.right {
-  padding: 4em 0;
+.banner-text {
+  padding: 5vh 0;
+  width: 45%;
+}
+.banner-image {
+  width: 35%;
+}
+.banner.right {
+  height: 35vh;
+  background: #FFE500;
 }
 .banner-container.right {
   flex-direction: row-reverse;
 }
-.banner-text {
-  width: 45%;
-}
-.banner-image {
-  width: 30%;
-  margin: -5vw 0;
-
-}
 .banner-container.right .banner-image {
   width: 45%;
-  max-width: 400px;
-  height: 0;
-  margin: -7em 0;
+  margin-top: -14vh;
 }
 </style>

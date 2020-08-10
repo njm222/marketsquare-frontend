@@ -2,14 +2,14 @@
   <div>
     <v-container>
       <div class="product-titles">
-        <h1>You build your Business with Love</h1>
-        <h1>We help you find Cutomers that’ll Love it</h1>
+        <div class="text-h3">You build your Business with Love</div>
+        <div class="text-h3 pb-6">We help you find Cutomers that’ll Love it</div>
         <v-tabs
           v-model="model"
           grow
-          color=primary
+          color="secondary"
         >
-          <v-tab v-for="item in items" :key="item.id + '-tab'">{{item.title}}</v-tab>
+          <v-tab v-for="item in items" :key="item.id + '-tab'" class="text-h6">{{item.title}}</v-tab>
         </v-tabs>
       </div>
     </v-container>
@@ -30,7 +30,7 @@
           >
             <v-card
               class="carousel-card"
-              color="#FFF"
+              color="secondary"
               elevation=4
             >
               <div
@@ -40,7 +40,7 @@
                 v-bind:class="{ right: index % 2 === 1 }"
               >
                 <div class="product-text">
-                  <h2>{{banner.bannerTitle}}</h2>
+                  <div class="text-h4 pb-2">{{banner.bannerTitle}}</div>
                   <p>{{banner.bannerText}}</p>
                 </div>
                 <div class="product-image">
@@ -105,6 +105,7 @@
   color: #000;
 }
 .product-image {
+  max-width: 100px;
   margin-left: 10%;
 }
 .product-item.right {

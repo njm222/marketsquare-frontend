@@ -4,10 +4,12 @@
 
 <script type="module">
   import * as THREE from 'three'
+  import Stats from 'stats.js'
     export default {
       name: "CubeThree",
       data() {
         return {
+          stats: Stats,
           cube: null,
           cubeParticles: [],
           composer: null,
@@ -25,17 +27,20 @@
       },
       methods: {
         init: function() {
+          this.stats = new Stats()
+          this.stats.showPanel( 1 )
+          document.body.appendChild( this.stats.dom )
           /** Scene setup */
           this.scene = new THREE.Scene()
           this.scene.background = new THREE.Color( 0xFFF500 );
           this.camera = new THREE.PerspectiveCamera(
             75,
-            window.innerWidth / (window.innerHeight * 6 / 10),
+            window.innerWidth / (window.innerHeight * 7.5 / 10),
             0.1,
             1000
           )
           this.renderer = new THREE.WebGLRenderer()
-          this.renderer.setSize(window.innerWidth, window.innerHeight * 6 / 10)
+          this.renderer.setSize(window.innerWidth, window.innerHeight * 7.5 / 10)
           this.$refs.sceneContainer.appendChild(this.renderer.domElement)
           this.camera.position.z = 75
 
@@ -85,13 +90,14 @@
           this.scene.add(ambiLight);
         },
         animate () {
-          requestAnimationFrame(this.animate)
+          this.stats.begin()
           if (!this.exploding) {
             this.cube.rotation.x += 0.01
             this.cube.rotation.y += 0.01
           } else {
             this.explode(this.cube)
           }
+          this.stats.end()
           requestAnimationFrame(this.animate)
           //this.composer.render(this.scene, this.camera)
           this.renderer.render(this.scene, this.camera)
@@ -128,7 +134,7 @@
         resizeCanvas () {
           window.addEventListener('resize', re => {
             const width = window.innerWidth
-            const height = window.innerHeight * 6 / 10
+            const height = window.innerHeight * 7.5 / 10
             this.camera.aspect = width / height
             this.renderer.setSize(width, height)
             this.renderer.setPixelRatio(window.devicePixelRatio)
@@ -146,7 +152,7 @@
 
 <style scoped>
 .sceneContainer {
-  height: 60vh;
+  height: 75vh;
   width: fit-content;
   position: absolute;
   right: 0;

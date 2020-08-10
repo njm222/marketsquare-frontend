@@ -4,7 +4,7 @@
     <v-container class="banner-container"
     >
       <div class="banner-text">
-        <h1 class="landing-title" v-html="landingTitle"></h1>
+        <div class="landing-title text-h4" v-html="landingTitle"></div>
         <p class="landing-subtitle" v-html="landingSubtitle"></p>
         <v-btn
         rounded
@@ -69,7 +69,7 @@
   background: #FFE500;
 }
 .banner-container {
-  min-height: 60vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
