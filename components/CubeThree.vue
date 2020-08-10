@@ -77,7 +77,7 @@
               z:(Math.random() * this.particleSpeed)-(this.particleSpeed/2)
             });
           }
-          this.cube.position.set(window.innerWidth * 5 / 100, 5, -5)
+          this.cube.position.set(window.innerWidth * 3 / 100, 5, -5)
           this.scene.add(this.cube)
 
           /** Lighting setup */

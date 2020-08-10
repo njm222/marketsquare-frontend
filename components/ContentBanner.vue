@@ -53,7 +53,7 @@
   width: 45%;
 }
 .banner-image {
-  width: 35%;
+  width: 40%;
 }
 .banner.right {
   height: 35vh;
@@ -64,6 +64,34 @@
 }
 .banner-container.right .banner-image {
   width: 45%;
-  margin-top: -14vh;
+  margin-top: -10%;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner,
+  .banner.right {
+    height: auto;
+    padding: 10% 5%;
+  }
+  .banner-container,
+  .banner-container.right {
+    flex-direction: column-reverse;
+  }
+
+  .banner-text {
+    padding: 0;
+    width: 80%;
+    margin: -10% auto auto;
+  }
+
+  .banner-container .banner-image,
+  .banner-container.right .banner-image {
+    width: 90%;
+    margin: -10% auto auto;
+  }
+
+  .banner-container.right .banner-image {
+    margin: -33% auto auto;
+  }
 }
 </style>
