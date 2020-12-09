@@ -1,9 +1,9 @@
 <template>
-    <v-container class="contact-container">
+    <div id="contact" class="contact-container">
       <div class="contact-title">
-        <h1>We don’t just Think Different<br />We Think Better</h1>
+        <div class="text-h5 pb-2 font-weight-bold">{{contact.title}}</div>
       </div>
-      <v-card raised elevation="4" class="contact-form-card">
+      <v-card elevation="0" color="#FFE500" class="contact-form-card">
         <v-form
           ref="form"
           v-model="valid"
@@ -95,12 +95,17 @@
           </v-container>
         </v-form>
       </v-card>
-    </v-container>
+    </div>
 </template>
 
 <script>
 
 export default {
+  props: {
+    contact: {
+      title: String,
+    }
+  },
   data () {
     return {
       contact: [],
@@ -178,8 +183,10 @@ export default {
 
 <style>
   .contact-container {
-    margin: 5vh 0;
+    width: 100%;
+    padding: 5vh 0;
     text-align: center;
+    background-color: #FFE500;
   }
   .contact-form-card {
     margin: 2vh 10vw;

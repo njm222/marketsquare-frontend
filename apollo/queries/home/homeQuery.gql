@@ -26,5 +26,8 @@ query Home {
         url
       }
     }
+    contact {
+      title
+    }
   }
 }

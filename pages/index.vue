@@ -17,7 +17,7 @@
       />
     </div>
     <CarouselBanner v-bind:items="home.serviceItems" />
-    <ContactForm />
+    <ContactForm v-bind:contact="home.contact" />
   </v-layout>
 </template>
 

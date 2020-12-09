@@ -29,7 +29,7 @@
               class="service-container"
             >
               <div class="service-text">
-                <div class="text-h4 pb-2 font-weight-bold">{{item.title}}</div>
+                  <div class="text-h4 pb-2 font-weight-bold">{{item.title}}</div>
               </div>
             </div>
           </v-col>
@@ -41,12 +41,6 @@
 <script>
     export default {
       name: "CarouselBanner",
-      data () {
-        return {
-          APIURL: process.env.APIURL,
-          model: 0
-        }
-      },
       props: {
         items: {
           title: String,
@@ -55,7 +49,13 @@
             url: String
           }
         }
-      }
+      },
+      data () {
+        return {
+          APIURL: process.env.APIURL,
+          model: 0
+        }
+      },
     }
 </script>
 
