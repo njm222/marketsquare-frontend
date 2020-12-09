@@ -1,38 +1,39 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
 //
 // The variables you want to modify
-// $font-size-root: 20px;
-@import '~vuetify/src/styles/styles.sass';
-
 /** Globals */
 
 $body-font-family: 'Spectral', sans-serif;
 
 $heading-font-family: 'Jost', sans-serif;
 
-$headings: (
-  'h1': (
-    'font-family': $heading-font-family
-  ),
-  'h2': (
-    'font-family': $heading-font-family,
-  ),
-  'h3': (
-    'font-family': $heading-font-family,
-    'font-weight': 500
-  ),
-  'h4': (
-    'font-family': $heading-font-family,
-    'font-weight': 500
-  ),
-  'h5': (
-    'font-family': $heading-font-family,
-    'font-weight': 500
-  ),
-  'h6': (
-    'font-family': $heading-font-family,
-  ),
-);
+.v-application {
+  font-family: $body-font-family;
+}
+
+.v-application {
+  .text-h1,
+  .text-h2,
+  .text-h3,
+  .text-h4,
+  .text-h5,
+  .text-h6,
+  {
+    font-family: $heading-font-family;
+  }
+
+  .subtitle-1,
+  .subtitle-2,
+  .body-1,
+  .body-2,
+  .button,
+  .caption,
+  .overline,
+  {
+    font-family: $body-font-family;
+  }
+
+}
 
 /** carousel */
 
@@ -64,3 +65,6 @@ $btn-text-transform: 'none';
 .v-btn:not(.v-btn--round).v-size--default {
   padding: 0 25px;
 }
+
+@import '~vuetify/src/styles/styles.sass';
+
