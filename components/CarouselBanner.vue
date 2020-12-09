@@ -1,59 +1,40 @@
 <template>
-  <div>
-    <v-container>
-      <div class="product-titles">
-        <div class="text-h3">You build your Business with Love</div>
-        <div class="text-h3 pb-6">We help you find Cutomers that’ll Love it</div>
-        <v-tabs
-          v-model="model"
-          grow
-          color="secondary"
-        >
-          <v-tab v-for="item in items" :key="item.id + '-tab'" class="text-h6">{{item.title}}</v-tab>
-        </v-tabs>
-      </div>
-    </v-container>
-    <v-carousel
-        light
-        hide-delimiters
-        height="auto"
-        v-model="model"
-        prev-icon="mdi-arrow-left"
-        next-icon="mdi-arrow-right"
-        class="product-carousel-container"
-
-      >
-        <v-carousel-item
+  <div id="services">
+    <v-container
+      class="services"
+    >
+      <v-row>
+          <v-col
             v-for="item in items"
-            :key="item.id"
-            class="product-carousel"
+            :key="item.id + '-service'"
+            cols="12"
+            md="4"
           >
-            <v-card
-              class="carousel-card"
-              color="secondary"
-              elevation=4
+            <div v-if="item.text"
+              class="service-container service-card"
             >
-              <div
-                v-for="(banner, index) in item.productItem"
-                :key="item.id + '-banner-' + index"
-                class="product-item"
-                v-bind:class="{ right: index % 2 === 1 }"
-              >
-                <div class="product-text">
-                  <div class="text-h4 pb-2">{{banner.bannerTitle}}</div>
-                  <p>{{banner.bannerText}}</p>
-                </div>
-                <div class="product-image">
-                  <v-img
-                    v-if="APIURL && banner.bannerImage"
-                    :src="APIURL + banner.bannerImage.url"
-                    :lazy-src="APIURL + banner.bannerImage.url"
-                  ></v-img>
-                </div>
+              <div class="service-image">
+                <v-img
+                  v-if="APIURL && item.image"
+                  :src="APIURL + item.image.url"
+                  :lazy-src="APIURL + item.image.url"
+                ></v-img>
               </div>
-            </v-card>
-      </v-carousel-item>
-    </v-carousel>
+              <div class="service-text">
+                <div class="text-h6 pb-2 font-weight-bold">{{item.title}}</div>
+                <div class="text">{{item.text}}</div>
+              </div>
+            </div>
+            <div v-else
+              class="service-container"
+            >
+              <div class="service-text">
+                <div class="text-h4 pb-2 font-weight-bold">{{item.title}}</div>
+              </div>
+            </div>
+          </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -69,12 +50,9 @@
       props: {
         items: {
           title: String,
-          productItem: {
-            bannerTitle: String,
-            bannerText: String,
-            bannerImage: {
-              url: String
-            }
+          text: String,
+          image: {
+            url: String
           }
         }
       }
@@ -82,39 +60,42 @@
 </script>
 
 <style scoped>
-.product-titles {
-  text-align: center;
+.services {
+  padding: 5vh 0;
 }
-.product-titles .v-tab {
-  color: #000;
-}
-.carousel-card {
-  margin: 1vh 4vw;
-  padding: 3vw 5vw;
-  border: 1px solid #000;
-}
-.product-item {
-  display: flex;
-  justify-content: flex-start;
-  padding: 2vh 0;
-}
-.product-text {
-  width: 45%;
+.service-container {
+  min-height: 300px;
   display: flex;
   flex-direction: column;
-  color: #000;
+  justify-content: center;
+  align-items: center;
 }
-.product-image {
+.service-image {
   max-width: 100px;
-  margin-left: 10%;
+  margin-bottom: 1em;
 }
-.product-item.right {
-  flex-direction: row-reverse;
+.service-text {
+  text-align: center;
+  margin: 0 1em;
 }
-.product-item.right .product-text {
-  margin-left: 10%;
+.text {
+  opacity: 0;
+  transition-duration: 0.7s;
+  transition-property: opacity;
 }
-.product-item.right .product-image {
-  margin-left: 0;
+.service-card:hover .text {
+  opacity: 100%;
+}
+.service-card {
+  opacity: 50%;
+  color: rgba(0, 0, 0, 0.87);
+  transition-duration: 1s;
+  transition-property: opacity, background-color, opacity, border, box-shadow;
+}
+.service-card:hover {
+  opacity: 100%;
+  background-color: #FFE500;
+  border: 2px #FFF solid;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 </style>

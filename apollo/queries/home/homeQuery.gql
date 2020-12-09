@@ -12,21 +12,18 @@ query Home {
       quoteAuthor
     }
     landingBanners {
-      bannerTitle
-      bannerText
-      bannerImage {
+      title
+      text
+      image {
         url
       }
     }
-    productContainer {
+    serviceItems {
       id
       title
-      productItem {
-        bannerTitle
-        bannerText
-        bannerImage {
-          url
-        }
+      text
+      image {
+        url
       }
     }
   }
