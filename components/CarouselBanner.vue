@@ -8,6 +8,7 @@
             v-for="item in items"
             :key="item.id + '-service'"
             cols="12"
+            sm="6"
             md="4"
           >
             <div v-if="item.text"
@@ -25,11 +26,11 @@
                 <div class="text">{{item.text}}</div>
               </div>
             </div>
-            <div v-else
+            <div v-else-if="!isMobile"
               class="service-container"
             >
               <div class="service-text">
-                  <div class="text-h4 pb-2 font-weight-bold">{{item.title}}</div>
+                <div class="text-h4 pb-2 font-weight-bold">{{item.title}}</div>
               </div>
             </div>
           </v-col>

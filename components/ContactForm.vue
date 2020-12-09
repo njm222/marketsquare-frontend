@@ -22,6 +22,7 @@
                   required
                 />
               </v-col>
+              <v-col cols="1"></v-col>
               <v-col>
                 <v-text-field
                   v-model="lastname"
@@ -44,6 +45,7 @@
                   required
                 />
               </v-col>
+              <v-col cols="1"></v-col>
               <v-col>
                 <v-text-field
                   v-model="subject"
@@ -188,8 +190,15 @@ export default {
     text-align: center;
     background-color: #FFE500;
   }
+  .contact-title {
+    padding: 1.5em 0 0;
+  }
   .contact-form-card {
-    margin: 2vh 10vw;
-    padding: 2vh 5vw;
+    padding: 5% 15%;
+  }
+  @media screen and (max-width: 768px) {
+    .contact-form-card {
+      padding: 5% 10%;
+    }
   }
 </style>

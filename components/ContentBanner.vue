@@ -51,6 +51,9 @@
 .banner-text {
   padding: 5vh 0;
   width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .banner-image {
   width: 40%;
