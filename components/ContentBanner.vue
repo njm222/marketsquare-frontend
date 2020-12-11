@@ -65,6 +65,9 @@
 .banner-container.right {
   flex-direction: row-reverse;
 }
+.banner-container.right .banner-text {
+  margin-top: -10%;
+}
 .banner-container.right .banner-image {
   width: 45%;
   margin-top: -10%;

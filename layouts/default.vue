@@ -51,15 +51,15 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
-  import Footer from '~/components/Footer'
-  import NavbarNav from "~/layouts/navbarNav";
+import { mapState } from 'vuex'
+import Footer from '~/components/Footer'
+import NavbarNav from "~/layouts/navbarNav";
 
 export default {
   computed: mapState([
     'isMobile'
   ]),
-  components: {NavbarNav, Footer },
+  components: { NavbarNav, Footer },
   data () {
     return {
       clipped: false,

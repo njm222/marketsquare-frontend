@@ -70,7 +70,7 @@ export default {
   padding: 5vh 0;
 }
 .service-container {
-  min-height: 300px;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
