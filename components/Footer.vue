@@ -23,7 +23,7 @@
         </v-btn>
       </v-card-text>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <v-card-text class="white--text">
         Copyright © {{ new Date().getFullYear() }} Market Square Media Solutions  |  All Rights Reserved  |  Terms & Conditions  |  Privacy Policy
@@ -33,17 +33,17 @@
 </template>
 
 <script>
-    export default {
-      name: "Footer",
-      data: () => ({
-        icons: [
-          'mdi-facebook',
-          'mdi-twitter',
-          'mdi-linkedin',
-          'mdi-instagram',
-        ],
-      }),
-    }
+export default {
+  name: 'Footer',
+  data: () => ({
+    icons: [
+      'mdi-facebook',
+      'mdi-twitter',
+      'mdi-linkedin',
+      'mdi-instagram'
+    ]
+  })
+}
 </script>
 
 <style scoped>

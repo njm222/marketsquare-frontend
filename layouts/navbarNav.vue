@@ -2,21 +2,21 @@
   <v-container>
     <v-row>
       <v-col v-for="item in navItems" :key="item.label">
-        <a v-on:click="navigate(item.value)" :href="item.link" class="navbar-nav-item">
+        <a :href="item.link" class="navbar-nav-item" @click="navigate(item.value)">
           <v-btn
             v-if="item.alternate"
             rounded
             raised
             dark
           >
-            {{item.label}}
+            {{ item.label }}
           </v-btn>
           <v-btn
             v-else
             text
           >
             <v-icon>{{ item.icon }}</v-icon>
-            {{item.label}}
+            {{ item.label }}
           </v-btn>
         </a>
       </v-col>
@@ -25,27 +25,27 @@
 </template>
 
 <script>
-  export default {
-    name: 'navbarNav',
-    data() {
-      return {
-        navItems: [
-          {label: 'Our Services', value: '#services'},
-          {label: '+91 832 908 6623', link: 'tel:+918329086623', icon: 'mdi-whatsapp'},
-          {label: 'Contact Us', value: '#contact', alternate: true}
-        ]
-      }
-    },
-    methods: {
-      navigate(ref) {
-        if(!ref) return
+export default {
+  name: 'NavbarNav',
+  data () {
+    return {
+      navItems: [
+        { label: 'Our Services', value: '#services' },
+        { label: '+91 832 908 6623', link: 'tel:+918329086623', icon: 'mdi-whatsapp' },
+        { label: 'Contact Us', value: '#contact', alternate: true }
+      ]
+    }
+  },
+  methods: {
+    navigate (ref) {
+      if (!ref) { return }
 
-        document.querySelector(ref).scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
+      document.querySelector(ref).scrollIntoView({
+        behavior: 'smooth'
+      })
     }
   }
+}
 </script>
 
 <style scoped>

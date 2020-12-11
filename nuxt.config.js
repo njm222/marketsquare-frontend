@@ -23,7 +23,7 @@ const config = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Jost&family=Spectral&display=swap'}
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Jost&family=Spectral&display=swap' }
     ]
   },
   /*
@@ -62,7 +62,7 @@ const config = {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.BACKEND_URL || "http://localhost:1337/graphql"
+        httpEndpoint: process.env.BACKEND_URL || 'http://localhost:1337/graphql'
       }
     }
   },
@@ -79,8 +79,8 @@ const config = {
         light: {
           primary: '#FFFF00',
           accent: '#131313',
-          secondary: '#FFE500',
-        },
+          secondary: '#FFE500'
+        }
       }
     }
   },
@@ -93,6 +93,6 @@ const config = {
   */
   build: {
   }
-};
+}
 
-export default config;
+export default config

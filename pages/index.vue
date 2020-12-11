@@ -4,20 +4,26 @@
     justify-center
     align-center
   >
-    <TopBanner :landingTitle="home.landingTitle"
-               :landingSubtitle="home.landingSubtitle"
-               :landingQuoteIcon="home.quoteIcon"
-               :landingQuotes="home.landingQuotes"
+    <TopBanner
+      :landing-title="home.landingTitle"
+      :landing-subtitle="home.landingSubtitle"
+      :landing-quote-icon="home.quoteIcon"
+      :landing-quotes="home.landingQuotes"
     />
-    <div class="banner" v-for="(banner, index) in home.landingBanners">
-      <Banner :index="index" :title="banner.title"
-              :content="banner.text"
-              v-bind:image="banner.image"
-              :key="`home-content-banner-${index}`"
+    <div
+      v-for="(banner, index) in home.landingBanners"
+      :key="`home-content-banner-${index}`"
+      class="banner"
+    >
+      <Banner
+        :index="index"
+        :title="banner.title"
+        :content="banner.text"
+        :image="banner.image"
       />
     </div>
-    <CarouselBanner v-bind:items="home.serviceItems" />
-    <ContactForm v-bind:contactDetails="home.contactDetails" />
+    <CarouselBanner :items="home.serviceItems" />
+    <ContactForm :contact-details="home.contactDetails" />
   </v-layout>
 </template>
 
@@ -47,7 +53,7 @@ export default {
       prefetch: true,
       query: HomeQuery
     }
-  },
+  }
 }
 </script>
 <style>

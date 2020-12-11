@@ -1,42 +1,44 @@
 <template>
-  <div class="banner"
-       v-bind:class="{ right: index % 2 === 1 }"
+  <div
+    class="banner"
+    :class="{ right: index % 2 === 1 }"
   >
-    <v-container class="banner-container"
-                 v-bind:class="{ right: index % 2 === 1 }"
+    <v-container
+      class="banner-container"
+      :class="{ right: index % 2 === 1 }"
     >
       <div class="banner-text">
-        <div class="banner-title text-h5 py-4" v-html="title"></div>
-        <p class="banner-content" v-html="content"></p>
+        <div class="banner-title text-h5 py-4" v-html="title" />
+        <p class="banner-content" v-html="content" />
       </div>
       <div class="banner-image">
         <v-img
           v-if="image && this.APIURL"
           :src="this.APIURL + image.url"
           :lazy-src="this.APIURL + image.url"
-        ></v-img>
+        />
       </div>
     </v-container>
   </div>
 </template>
 
 <script>
-    export default {
-      name: "Banner",
-      data () {
-        return {
-          APIURL: process.env.APIURL
-        }
-      },
-      props: {
-        index: Number,
-        title: String,
-        content: String,
-        image: {
-          url: String
-        }
-      }
+export default {
+  name: 'Banner',
+  props: {
+    index: Number,
+    title: String,
+    content: String,
+    image: {
+      url: String
     }
+  },
+  data () {
+    return {
+      APIURL: process.env.APIURL
+    }
+  }
+}
 </script>
 
 <style scoped>

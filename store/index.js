@@ -1,9 +1,9 @@
 export const state = () => ({
-  isMobile: false,
+  isMobile: false
 })
 
 export const mutations = {
   setIsMobile (state, payload) {
-    state.isMobile = payload;
+    state.isMobile = payload
   }
 }

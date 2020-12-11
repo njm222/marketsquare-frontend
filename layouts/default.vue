@@ -9,9 +9,9 @@
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <div
-      v-if="!isMobile"
+        v-if="!isMobile"
       >
-        <navbar-nav></navbar-nav>
+        <navbar-nav />
       </div>
       <v-app-bar-nav-icon
         v-if="isMobile"
@@ -53,7 +53,7 @@
 <script>
 import { mapState } from 'vuex'
 import Footer from '~/components/Footer'
-import NavbarNav from "~/layouts/navbarNav";
+import NavbarNav from '~/layouts/navbarNav'
 
 export default {
   computed: mapState([
@@ -70,7 +70,7 @@ export default {
           icon: 'mdi-apps',
           title: 'Welcome',
           to: '/'
-        },
+        }
       ],
       miniVariant: false,
       right: true,
@@ -78,7 +78,7 @@ export default {
     }
   },
   beforeDestroy () {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined') { return }
 
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
@@ -92,8 +92,8 @@ export default {
   methods: {
     onResize () {
       this.$store.commit('setIsMobile', (window.innerWidth < 768))
-    },
-  },
+    }
+  }
 }
 </script>
 

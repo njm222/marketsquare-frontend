@@ -1,16 +1,17 @@
 <template>
   <div class="top-banner">
     <CubeThree />
-    <v-container class="banner-container"
+    <v-container
+      class="banner-container"
     >
       <div class="banner-text">
-        <div class="landing-title text-h4" v-html="landingTitle"></div>
-        <p class="landing-subtitle" v-html="landingSubtitle"></p>
+        <div class="landing-title text-h4" v-html="landingTitle" />
+        <p class="landing-subtitle" v-html="landingSubtitle" />
         <v-btn
-        rounded
-        raised
-        dark
-        color="accent"
+          rounded
+          raised
+          dark
+          color="accent"
         >
           Here's how
         </v-btn>
@@ -21,17 +22,20 @@
           :src="APIURL + landingQuoteIcon.url"
           :lazy-src="APIURL + landingQuoteIcon.url"
           width="36"
-        >
-
-        </v-img>
-        <v-carousel cycle
-                    hide-delimiters
-                    :show-arrows=false
-                    height="auto"
+        />
+        <v-carousel
+          cycle
+          hide-delimiters
+          :show-arrows="false"
+          height="auto"
         >
           <v-carousel-item v-for="quote in landingQuotes" :key="quote.id">
-            <div class="quote">"{{quote.quoteText}}"</div>
-            <div class="quote-author">{{quote.quoteAuthor}}</div>
+            <div class="quote">
+              "{{ quote.quoteText }}"
+            </div>
+            <div class="quote-author">
+              {{ quote.quoteAuthor }}
+            </div>
           </v-carousel-item>
         </v-carousel>
       </div>
@@ -40,27 +44,27 @@
 </template>
 
 <script>
-  import CubeThree from '~/components/CubeThree'
-  export default {
-    components: {
-      CubeThree
+import CubeThree from '~/components/CubeThree'
+export default {
+  name: 'TopBanner',
+  components: {
+    CubeThree
+  },
+  props: {
+    landingTitle: String,
+    landingSubtitle: String,
+    landingQuoteIcon: {
+      id: String,
+      url: String
     },
-    name: "TopBanner",
-    data () {
-      return {
-        APIURL: process.env.APIURL,
-      }
-    },
-    props: {
-      landingTitle: String,
-      landingSubtitle: String,
-      landingQuoteIcon: {
-        id: String,
-        url: String
-      },
-      landingQuotes: Array
+    landingQuotes: Array
+  },
+  data () {
+    return {
+      APIURL: process.env.APIURL
     }
   }
+}
 </script>
 
 <style scoped>
