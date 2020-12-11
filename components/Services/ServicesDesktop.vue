@@ -1,57 +1,55 @@
 <template>
-  <div id="services">
-    <v-container
-      class="services"
-    >
-      <v-row>
-        <v-col
-          v-for="item in items"
-          :key="item.id + '-service'"
-          cols="12"
-          md="4"
-          class="service-item"
+  <v-container
+    class="services"
+  >
+    <v-row>
+      <v-col
+        v-for="item in items"
+        :key="item.id + '-service'"
+        cols="12"
+        md="4"
+        class="service-item"
+      >
+        <div
+          v-if="item.text"
+          class="service-container service-card"
         >
-          <div
-            v-if="item.text"
-            class="service-container service-card"
-          >
-            <div class="service-image">
-              <v-img
-                v-if="APIURL && item.image"
-                :src="APIURL + item.image.url"
-                :lazy-src="APIURL + item.image.url"
-              />
+          <div class="service-image">
+            <v-img
+              v-if="APIURL && item.image"
+              :src="APIURL + item.image.url"
+              :lazy-src="APIURL + item.image.url"
+            />
+          </div>
+          <div class="service-text">
+            <div class="text-h6 pb-2 font-weight-bold">
+              {{ item.title }}
             </div>
-            <div class="service-text">
-              <div class="text-h6 pb-2 font-weight-bold">
-                {{ item.title }}
-              </div>
-              <div class="text">
-                {{ item.text }}
-              </div>
+            <div class="text">
+              {{ item.text }}
             </div>
           </div>
-          <div
-            v-else-if="!isMobile"
-            class="service-container"
-          >
-            <div class="service-text">
-              <div class="text-h4 pb-2 font-weight-bold">
-                {{ item.title }}
-              </div>
+        </div>
+        <div
+          v-else-if="!isMobile"
+          class="service-container"
+        >
+          <div class="service-text">
+            <div class="text-h4 pb-2 font-weight-bold">
+              {{ item.title }}
             </div>
           </div>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
 export default {
-  name: 'Services',
+  name: 'ServicesDesktop',
   computed: mapState([
     'isMobile'
   ]),

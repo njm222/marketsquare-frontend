@@ -22,23 +22,23 @@
         :image="banner.image"
       />
     </div>
-    <CarouselBanner :items="home.serviceItems" />
+    <Services :items="home.serviceItems" />
     <ContactForm :contact-details="home.contactDetails" />
   </v-layout>
 </template>
 
 <script>
+import HomeQuery from '~/apollo/queries/home/homeQuery'
 import Banner from '~/components/ContentBanner'
 import Logo from '~/components/Logo.vue'
 import TopBanner from '~/components/TopBanner'
-import HomeQuery from '~/apollo/queries/home/homeQuery'
-import CarouselBanner from '~/components/Services'
+import Services from '~/components/Services/Services'
 import ContactForm from '~/components/ContactForm'
 
 export default {
   components: {
     ContactForm,
-    CarouselBanner,
+    Services,
     Banner,
     Logo,
     TopBanner

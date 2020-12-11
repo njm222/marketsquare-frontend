@@ -42,28 +42,6 @@ $heading-font-family: 'Jost', sans-serif;
 
 }
 
-/** carousel */
-
-.product-carousel-container .theme--light.v-btn.v-btn--icon {
-  background-color: #FFF;
-  color: #131313;
-  padding: 2em;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12) !important;
-}
-
-/** tabs */
-
-.v-tabs-slider {
-  height: 1em;
-  margin: auto;
-  max-width: 65%;
-}
-
-.v-tabs-slider-wrapper {
-  z-index: 0;
-  bottom: 1.25em;
-}
-
 /** button */
 
 $btn-font-weight: 800;
