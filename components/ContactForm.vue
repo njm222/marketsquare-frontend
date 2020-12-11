@@ -1,7 +1,7 @@
 <template>
     <div id="contact" class="contact-container">
       <div class="contact-title">
-        <div class="text-h5 pb-2 font-weight-bold">{{contact.title}}</div>
+        <div class="text-h5 pb-2 font-weight-bold">{{contactDetails.title}}</div>
       </div>
       <v-card elevation="0" color="#FFE500" class="contact-form-card">
         <v-form
@@ -104,13 +104,12 @@
 
 export default {
   props: {
-    contact: {
+    contactDetails: {
       title: String,
     }
   },
   data () {
     return {
-      contact: [],
       valid: true,
       formMessage: '',
       firstname: '',

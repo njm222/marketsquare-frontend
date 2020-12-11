@@ -8,8 +8,8 @@
             v-for="item in items"
             :key="item.id + '-service'"
             cols="12"
-            sm="6"
             md="4"
+            class="service-item"
           >
             <div v-if="item.text"
               class="service-container service-card"
@@ -40,24 +40,29 @@
 </template>
 
 <script>
-    export default {
-      name: "CarouselBanner",
-      props: {
-        items: {
-          title: String,
-          text: String,
-          image: {
-            url: String
-          }
-        }
-      },
-      data () {
-        return {
-          APIURL: process.env.APIURL,
-          model: 0
-        }
-      },
+import { mapState } from 'vuex'
+
+export default {
+  name: "Services",
+  computed: mapState([
+    'isMobile'
+  ]),
+  props: {
+    items: {
+      title: String,
+      text: String,
+      image: {
+        url: String
+      }
     }
+  },
+  data () {
+    return {
+      APIURL: process.env.APIURL,
+      model: 0
+    }
+  },
+}
 </script>
 
 <style scoped>
@@ -70,6 +75,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.service-item {
+  padding: 2px;
 }
 .service-image {
   max-width: 100px;

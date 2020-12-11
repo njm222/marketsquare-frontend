@@ -51,17 +51,20 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   import Footer from '~/components/Footer'
   import NavbarNav from "~/layouts/navbarNav";
 
 export default {
+  computed: mapState([
+    'isMobile'
+  ]),
   components: {NavbarNav, Footer },
   data () {
     return {
       clipped: false,
       drawer: false,
       fixed: false,
-      isMobile: false,
       items: [
         {
           icon: 'mdi-apps',
@@ -88,7 +91,7 @@ export default {
 
   methods: {
     onResize () {
-      this.isMobile = window.innerWidth < 768
+      this.$store.commit('setIsMobile', (window.innerWidth < 768))
     },
   },
 }

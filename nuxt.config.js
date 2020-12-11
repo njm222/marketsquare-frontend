@@ -93,6 +93,6 @@ const config = {
   */
   build: {
   }
-}
+};
 
-export default config
+export default config;
