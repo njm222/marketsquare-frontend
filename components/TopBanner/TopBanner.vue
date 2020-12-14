@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import CubeThree from '~/components/CubeThree'
+import CubeThree from '~/components/TopBanner/CubeThree'
 export default {
   name: 'TopBanner',
   components: {

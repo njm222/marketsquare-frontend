@@ -50,9 +50,6 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'ServicesDesktop',
-  computed: mapState([
-    'isMobile'
-  ]),
   props: {
     items: {
       title: String,
@@ -67,7 +64,10 @@ export default {
       APIURL: process.env.APIURL,
       model: 0
     }
-  }
+  },
+  computed: mapState([
+    'isMobile'
+  ])
 }
 </script>
 
