@@ -161,5 +161,6 @@ export default {
   width: fit-content;
   position: absolute;
   right: 0;
+  cursor: pointer;
 }
 </style>

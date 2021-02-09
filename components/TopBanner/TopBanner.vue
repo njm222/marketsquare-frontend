@@ -31,7 +31,7 @@
         >
           <v-carousel-item v-for="quote in landingQuotes" :key="quote.id">
             <div class="quote">
-              "{{ quote.quoteText }}"
+              {{ quote.quoteText }}
             </div>
             <div class="quote-author">
               {{ quote.quoteAuthor }}
@@ -87,11 +87,13 @@ export default {
 }
 .banner-quote .quote {
   color: #000;
+  padding: 0 1em;
 }
 .banner-quote .quote-author {
   display: flex;
   justify-content: flex-end;
   font-weight: bold;
   color: #000;
+  padding: 0 1em;
 }
 </style>
