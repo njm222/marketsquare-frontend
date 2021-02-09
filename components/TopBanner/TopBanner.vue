@@ -18,9 +18,9 @@
       </div>
       <div class="banner-quote">
         <v-img
-          v-if="landingQuoteIcon && APIURL"
-          :src="APIURL + landingQuoteIcon.url"
-          :lazy-src="APIURL + landingQuoteIcon.url"
+          v-if="landingQuoteIcon"
+          :src="landingQuoteIcon.url"
+          :lazy-src="landingQuoteIcon.url"
           width="36"
         />
         <v-carousel
@@ -59,11 +59,6 @@ export default {
     },
     landingQuotes: Array
   },
-  data () {
-    return {
-      APIURL: process.env.APIURL
-    }
-  }
 }
 </script>
 

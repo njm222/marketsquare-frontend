@@ -18,6 +18,7 @@
         @click.stop="drawer = !drawer"
       />
       <v-navigation-drawer
+        v-if="isMobile"
         v-model="drawer"
         :mini-variant="miniVariant"
         :right="right"

@@ -13,9 +13,9 @@
       </div>
       <div class="banner-image">
         <v-img
-          v-if="image && this.APIURL"
-          :src="this.APIURL + image.url"
-          :lazy-src="this.APIURL + image.url"
+          v-if="image"
+          :src="image.url"
+          :lazy-src="image.url"
         />
       </div>
     </v-container>
@@ -33,11 +33,6 @@ export default {
       url: String
     }
   },
-  data () {
-    return {
-      APIURL: process.env.APIURL
-    }
-  }
 }
 </script>
 

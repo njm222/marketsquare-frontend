@@ -16,9 +16,9 @@
         >
           <div class="service-image">
             <v-img
-              v-if="APIURL && item.image"
-              :src="APIURL + item.image.url"
-              :lazy-src="APIURL + item.image.url"
+              v-if="item.image"
+              :src="item.image.url"
+              :lazy-src="item.image.url"
             />
           </div>
           <div class="service-text">
@@ -61,7 +61,6 @@ export default {
   },
   data () {
     return {
-      APIURL: process.env.APIURL,
       model: 0
     }
   },
@@ -73,7 +72,7 @@ export default {
 
 <style scoped>
 .services {
-  padding: 5vh 0;
+  padding: 10vh 0 5vh;
 }
 .service-container {
   min-height: 30vh;

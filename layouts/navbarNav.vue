@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: 'NavbarNav',
   data () {
@@ -36,6 +38,9 @@ export default {
       ]
     }
   },
+  computed: mapState([
+    'isMobile'
+  ]),
   methods: {
     navigate (ref) {
       if (!ref) { return }

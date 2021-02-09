@@ -22,12 +22,6 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      APIURL: process.env.APIURL,
-      model: 0
-    }
-  },
   computed: mapState([
     'isMobile'
   ])

@@ -22,9 +22,9 @@
         >
           <div class="service-image">
             <v-img
-              v-if="APIURL && item.image"
-              :src="APIURL + item.image.url"
-              :lazy-src="APIURL + item.image.url"
+              v-if="item.image"
+              :src="item.image.url"
+              :lazy-src="item.image.url"
             />
           </div>
           <div class="text-h6 pb-2 font-weight-bold">
@@ -55,7 +55,6 @@ export default {
   },
   data () {
     return {
-      APIURL: process.env.APIURL,
       model: 0
     }
   },
