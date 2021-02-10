@@ -103,6 +103,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
   props: {
@@ -147,7 +148,7 @@ export default {
     submit () {
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
         body: JSON.stringify({
           to: 'test@gmail.com',
           from: 'test@gmail.com',
@@ -156,7 +157,7 @@ export default {
           text: this.message + '\n' + this.firstname + ' ' + this.lastname
         })
       }
-      fetch('localhost:1337/email', requestOptions)
+      axios.post(`${process.env.BACKEND_URL}/email`, requestOptions)
         .then(async (response) => {
           const data = await response.json()
 
@@ -173,7 +174,8 @@ export default {
             this.formMessage = 'Your message has been sent!'
           }
         })
-        .catch(() => {
+        .catch((e) => {
+          console.log(e)
           this.formMessage = 'There was an error sending the message, please try again later.'
         })
     },

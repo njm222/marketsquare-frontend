@@ -1,4 +1,4 @@
-const config = {
+export default {
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -62,7 +62,7 @@ const config = {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.BACKEND_URL || 'http://localhost:1337/graphql'
+        httpEndpoint: `${process.env.BACKEND_URL}/graphql` || 'http://localhost:1337/graphql'
       }
     }
   },
@@ -84,6 +84,9 @@ const config = {
       }
     }
   },
+  env: {
+    BACKEND_URL: process.env.BACKEND_URL
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
@@ -92,4 +95,3 @@ const config = {
   }
 }
 
-export default config
