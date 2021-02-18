@@ -4,12 +4,10 @@
 
 <script type="module">
 import * as THREE from 'three'
-import Stats from 'stats.js'
 export default {
   name: 'CubeThree',
   data () {
     return {
-      stats: Stats,
       cube: null,
       cubeParticles: [],
       composer: null,
@@ -27,15 +25,14 @@ export default {
     }
   },
   mounted () {
-    this.init()
-    this.animate()
-    this.resizeCanvas()
+    setTimeout(() => {
+      this.init()
+      this.animate()
+      this.resizeCanvas()
+    }, 0)
   },
   methods: {
     init () {
-      this.stats = new Stats()
-      this.stats.showPanel(1)
-      document.body.appendChild(this.stats.dom)
       /** Scene setup */
       this.scene = new THREE.Scene()
       this.scene.background = new THREE.Color(0xFFF500)
@@ -94,14 +91,12 @@ export default {
       this.scene.add(ambiLight)
     },
     animate () {
-      this.stats.begin()
       if (!this.exploding) {
         this.cube.rotation.x += 0.01
         this.cube.rotation.y += 0.01
       } else {
         this.explode(this.y)
       }
-      this.stats.end()
       requestAnimationFrame(this.animate)
       // this.composer.render(this.scene, this.camera)
       this.renderer.render(this.scene, this.camera)
