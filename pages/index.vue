@@ -30,7 +30,6 @@
 <script>
 import HomeQuery from '~/apollo/queries/home/homeQuery'
 import Banner from '~/components/ContentBanner'
-import Logo from '~/components/Logo.vue'
 import TopBanner from '~/components/TopBanner/TopBanner'
 import Services from '~/components/Services/Services'
 import ContactForm from '~/components/Contact/ContactForm'
@@ -40,7 +39,6 @@ export default {
     ContactForm,
     Services,
     Banner,
-    Logo,
     TopBanner
   },
   data () {

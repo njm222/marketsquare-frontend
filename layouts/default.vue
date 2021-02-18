@@ -2,7 +2,6 @@
   <v-app dark>
     <v-app-bar
       color="#FFFF00"
-      :clipped-left="clipped"
       fixed
       app
     >
@@ -22,7 +21,6 @@
         v-model="drawer"
         :mini-variant="miniVariant"
         :right="right"
-        :clipped="clipped"
         fixed
         app
       >
@@ -57,13 +55,9 @@ import Footer from '~/components/Footer'
 import NavbarNav from '~/layouts/navbarNav'
 
 export default {
-  computed: mapState([
-    'isMobile'
-  ]),
   components: { NavbarNav, Footer },
   data () {
     return {
-      clipped: false,
       drawer: false,
       fixed: false,
       items: [
@@ -78,6 +72,9 @@ export default {
       title: 'MarketSquare'
     }
   },
+  computed: mapState([
+    'isMobile'
+  ]),
   beforeDestroy () {
     if (typeof window === 'undefined') { return }
 
@@ -97,7 +94,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-@import "./assets/variables.scss"
-</style>
