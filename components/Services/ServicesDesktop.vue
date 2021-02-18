@@ -15,11 +15,17 @@
           class="service-container service-card"
         >
           <div class="service-image">
-            <v-img
-              v-if="item.image"
-              :src="item.image.url"
-              :lazy-src="item.image.url"
-            />
+            <v-lazy
+              :options="{
+                threshold: .5
+              }"
+            >
+              <v-img
+                v-if="item.image"
+                :src="item.image.url"
+                :lazy-src="item.image.url"
+              />
+            </v-lazy>
           </div>
           <div class="service-text">
             <div class="text-h6 pb-2 font-weight-bold">

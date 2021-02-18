@@ -12,11 +12,17 @@
         <p class="banner-content" v-html="content" />
       </div>
       <div class="banner-image">
-        <v-img
-          v-if="image"
-          :src="image.url"
-          :lazy-src="image.url"
-        />
+        <v-lazy
+          :options="{
+            threshold: .5
+          }"
+        >
+          <v-img
+            v-if="image"
+            :src="image.url"
+            :lazy-src="image.url"
+          />
+        </v-lazy>
       </div>
     </v-container>
   </div>
@@ -32,7 +38,7 @@ export default {
     image: {
       url: String
     }
-  },
+  }
 }
 </script>
 
