@@ -1,3 +1,5 @@
+import minifyTheme from 'minify-css-string'
+
 export default {
   /*
   ** Nuxt rendering mode
@@ -22,8 +24,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Jost&family=Spectral&display=swap' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
@@ -48,7 +49,8 @@ export default {
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/vuetify',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    '@nuxtjs/google-fonts'
   ],
   /*
   ** Nuxt.js modules
@@ -57,12 +59,27 @@ export default {
     '@nuxtjs/pwa'
   ],
   /*
-  ** apollo module configuration
+  ** Web font loader
+  */
+  googleFonts: {
+    families: {
+      Spectral: true,
+      Jost: true
+    },
+    display: 'swap'
+  },
+  /*
+  ** Apollo module configuration
   */
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: `${process.env.BACKEND_URL}/graphql` || 'http://localhost:1337/graphql'
+        httpEndpoint: `${process.env.BACKEND_URL}/graphql` || 'http://localhost:1337/graphql',
+        httpLinkOptions: {
+          fetchOptions: {
+            mode: 'cors'
+          }
+        }
       }
     }
   },
@@ -73,6 +90,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
+    defaultAssets: false,
     theme: {
       dark: false,
       themes: {
@@ -81,6 +99,9 @@ export default {
           accent: '#131313',
           secondary: '#FFE500'
         }
+      },
+      options: {
+        minifyTheme
       }
     }
   },
@@ -92,6 +113,12 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    cache: true,
+    parallel: true,
+    splitChunks: {
+      layouts: true,
+      pages: true,
+      commons: true
+    }
   }
 }
-
