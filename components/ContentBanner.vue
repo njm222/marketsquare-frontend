@@ -81,8 +81,6 @@ export default {
   }
 }
 
-
-
 @media only screen and (max-width: 768px) {
   .banner,
   .banner.right {
@@ -97,7 +95,7 @@ export default {
   .banner-text {
     padding: 0;
     width: 80%;
-    margin: -10% auto auto;
+    margin: -5% auto auto;
   }
 
   .banner-container .banner-image,

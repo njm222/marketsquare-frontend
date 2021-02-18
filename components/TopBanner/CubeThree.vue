@@ -17,7 +17,7 @@ export default {
       exploding: false,
       y: 1,
       particleSize: 1,
-      particleColour: 0xA5402D,
+      particleColour: 0xEC474C,
       particleSpeed: 10,
       dirs: [],
       limit: 300,

@@ -1,6 +1,6 @@
 import minifyTheme from 'minify-css-string'
 
-export default {
+const config = {
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -122,3 +122,5 @@ export default {
     }
   }
 }
+
+export default config
