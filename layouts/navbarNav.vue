@@ -1,7 +1,7 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col v-for="item in navItems" :key="item.label">
+  <div>
+    <v-row justify="end">
+      <v-col v-for="item in computedNavItems" :key="item.label">
         <a :href="item.link" class="navbar-nav-item" @click="navigate(item.value)">
           <v-btn
             v-if="item.alternate"
@@ -21,11 +21,11 @@
         </a>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 
 export default {
   name: 'NavbarNav',
@@ -38,9 +38,14 @@ export default {
       ]
     }
   },
-  computed: mapState([
-    'isMobile'
-  ]),
+  computed: {
+    ...mapState([
+      'isMobile'
+    ]),
+    computedNavItems() {
+      return this.isMobile ? this.$data.navItems.slice(1, 2) : this.$data.navItems
+    }
+  },
   methods: {
     navigate (ref) {
       if (!ref) { return }
