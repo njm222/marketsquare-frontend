@@ -114,12 +114,7 @@ const config = {
   */
   build: {
     cache: true,
-    parallel: true,
-    splitChunks: {
-      layouts: true,
-      pages: true,
-      commons: true
-    }
+    parallel: true
   }
 }
 
