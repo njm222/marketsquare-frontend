@@ -90,7 +90,9 @@ const config = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
-    defaultAssets: false,
+    defaultAssets: {
+      icons: 'mdi'
+    },
     theme: {
       dark: false,
       themes: {
