@@ -38,12 +38,12 @@ export default {
       this.scene.background = new THREE.Color(0xFFF500)
       this.camera = new THREE.PerspectiveCamera(
         75,
-        window.innerWidth / (window.innerHeight * 7.5 / 10),
+        window.innerWidth / (window.innerHeight * 9 / 10),
         0.1,
         1000
       )
       this.renderer = new THREE.WebGLRenderer()
-      this.renderer.setSize(window.innerWidth, window.innerHeight * 7.5 / 10)
+      this.renderer.setSize(window.innerWidth, window.innerHeight * 9 / 10)
       this.$refs.sceneContainer.appendChild(this.renderer.domElement)
       this.camera.position.z = 75
 
@@ -139,7 +139,7 @@ export default {
     resizeCanvas () {
       window.addEventListener('resize', () => {
         const width = window.innerWidth
-        const height = window.innerHeight * 7.5 / 10
+        const height = window.innerHeight * 9 / 10
         this.camera.aspect = width / height
         this.renderer.setSize(width, height)
         this.renderer.setPixelRatio(window.devicePixelRatio)
@@ -152,7 +152,7 @@ export default {
 
 <style scoped>
 .sceneContainer {
-  height: 75vh;
+  height: 100%;
   width: fit-content;
   position: absolute;
   right: 0;

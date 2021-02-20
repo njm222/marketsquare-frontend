@@ -68,7 +68,7 @@ export default {
   background: #FFE500;
 }
 .banner-container {
-  min-height: 75vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
