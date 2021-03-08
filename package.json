@@ -39,7 +39,7 @@
     "eslint-plugin-nuxt": "^1.0.0",
     "jest": "^26.0.1",
     "stats.js": "^0.17.0",
-    "three": "^0.117.1",
+    "three": "^0.125.0",
     "ts-jest": "^26.1.0",
     "vue-jest": "^3.0.4"
   }
