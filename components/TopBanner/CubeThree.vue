@@ -11,6 +11,7 @@ export default {
     return {
       stats: Stats,
       cube: null,
+      floor: null,
       cubeParticles: [],
       composer: null,
       renderer: null,
@@ -45,10 +46,13 @@ export default {
         0.1,
         1000
       )
+      this.camera.rotation.set(0, 0, 0)
       this.renderer = new THREE.WebGLRenderer()
       this.renderer.setSize(window.innerWidth, window.innerHeight * 7.5 / 10)
+      this.renderer.shadowMap.enabled = true
+      this.renderer.shadowMapType = THREE.PCFSoftShadowMap
       this.$refs.sceneContainer.appendChild(this.renderer.domElement)
-      this.camera.position.z = 75
+      this.camera.position.z = 100
 
       /** Postprocessing setup
           this.composer = EffectComposer( this.renderer );
@@ -59,17 +63,40 @@ export default {
           this.composer.passes[1].uniforms.damp.value = 0.7
            */
 
+      const loader = new THREE.TextureLoader()
+      const texture = loader.load('https://threejsfundamentals.org/threejs/resources/images/checker.png')
+      texture.wrapS = THREE.RepeatWrapping
+      texture.wrapT = THREE.RepeatWrapping
+      texture.magFilter = THREE.NearestFilter
+      const repeats = 500 / 2
+      texture.repeat.set(repeats, repeats)
+      /** Floor setup */
+      const floorGeo = new THREE.PlaneBufferGeometry(1000, 1000)
+      const floorMat = new THREE.MeshPhongMaterial()
+      this.floor = new THREE.Mesh(floorGeo, floorMat)
+      this.floor.receiveShadow = true
+
       /** Particle setup */
-      const geometry = new THREE.BoxGeometry(30, 30, 30, 5, 5, 5)
+      const cubeGeo = new THREE.BoxGeometry(30, 30, 30, 5, 5, 5)
       const particleGeo = new THREE.BoxBufferGeometry(6, 6, 6)
-      const particleMat = new THREE.MeshLambertMaterial({ color: this.particleColour, precision: 'highp' })
+      const particleMat = new THREE.MeshPhongMaterial({ color: this.particleColour, precision: 'highp' })
       const particleCube = new THREE.Mesh(particleGeo, particleMat)
+      particleCube.castShadow = true
       this.cube = new THREE.Group()
 
-      for (let i = 0; i < geometry.vertices.length; i++) {
+      /** Cube positioning */
+      this.cube.position.set(window.innerWidth * 3 / 100, 5, -5)
+      this.scene.add(this.cube)
+
+      /** Floor positioning */
+      this.floor.position.set(0, -75, 0)
+      this.floor.rotation.set(-Math.PI / 2, 0, 0)
+      this.scene.add(this.floor)
+
+      for (let i = 0; i < cubeGeo.vertices.length; i++) {
         /** create each particleCube */
         const shape = particleCube.clone()
-        const vertex = geometry.vertices[i]
+        const vertex = cubeGeo.vertices[i]
         shape.position.set(vertex.x, vertex.y, vertex.z)
         this.cubeParticles.push(shape)
         this.cube.add(shape)
@@ -81,15 +108,23 @@ export default {
           z: (Math.random() * this.particleSpeed) - (this.particleSpeed / 3)
         })
       }
-      this.cube.position.set(window.innerWidth * 3 / 100, 5, -5)
-      this.scene.add(this.cube)
 
       /** Lighting setup */
       const color = 0xFFFFFF
       const intensity = 1
       const light = new THREE.DirectionalLight(color, intensity)
       const ambiLight = new THREE.AmbientLight(0x404040)
-      light.position.set(2, 5, 4)
+      light.position.set(0, 100, 90)
+      light.target = this.scene
+      light.castShadow = true
+      const shadowResolution = 4096 * 2
+      light.shadow.mapSize.width = shadowResolution
+      light.shadow.mapSize.height = shadowResolution
+      const side = 1000
+      light.shadow.camera.top = side
+      light.shadow.camera.bottom = -side
+      light.shadow.camera.left = side
+      light.shadow.camera.right = -side
       this.scene.add(light)
       this.scene.add(ambiLight)
     },
