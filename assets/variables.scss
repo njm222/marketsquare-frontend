@@ -15,41 +15,10 @@ $body-font-family: 'Spectral', sans-serif;
 
 $heading-font-family: 'Jost', sans-serif;
 
-.v-application {
-  font-family: $body-font-family;
-}
-
-.v-application {
-  .text-h1,
-  .text-h2,
-  .text-h3,
-  .text-h4,
-  .text-h5,
-  .text-h6,
-  {
-    font-family: $heading-font-family;
-  }
-  .subtitle-1,
-  .subtitle-2,
-  .body-1,
-  .body-2,
-  .button,
-  .caption,
-  .overline,
-  {
-    font-family: $body-font-family;
-  }
-
-}
-
 /** button */
 
 $btn-font-weight: 800;
 $btn-text-transform: 'none';
-
-.v-btn:not(.v-btn--round).v-size--default {
-  padding: 0 25px;
-}
 
 @import '~vuetify/src/styles/styles.sass';
 

@@ -1,3 +1,5 @@
+import minifyTheme from 'minify-css-string'
+
 const config = {
   /*
   ** Nuxt rendering mode
@@ -22,8 +24,7 @@ const config = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Jost&family=Spectral&display=swap' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
@@ -48,7 +49,8 @@ const config = {
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/vuetify',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    '@nuxtjs/google-fonts'
   ],
   /*
   ** Nuxt.js modules
@@ -57,12 +59,27 @@ const config = {
     '@nuxtjs/pwa'
   ],
   /*
-  ** apollo module configuration
+  ** Web font loader
+  */
+  googleFonts: {
+    families: {
+      Spectral: true,
+      Jost: true
+    },
+    display: 'swap'
+  },
+  /*
+  ** Apollo module configuration
   */
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.BACKEND_URL || 'http://localhost:1337/graphql'
+        httpEndpoint: `${process.env.BACKEND_URL}/graphql` || 'http://localhost:1337/graphql',
+        httpLinkOptions: {
+          fetchOptions: {
+            mode: 'cors'
+          }
+        }
       }
     }
   },
@@ -73,6 +90,9 @@ const config = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
+    defaultAssets: {
+      icons: 'mdi'
+    },
     theme: {
       dark: false,
       themes: {
@@ -81,17 +101,22 @@ const config = {
           accent: '#131313',
           secondary: '#FFE500'
         }
+      },
+      options: {
+        minifyTheme
       }
     }
   },
   env: {
-    APIURL: process.env.VUE_APP_APIURL
+    BACKEND_URL: process.env.BACKEND_URL
   },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    cache: true,
+    parallel: true
   }
 }
 

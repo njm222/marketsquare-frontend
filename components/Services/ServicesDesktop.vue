@@ -15,11 +15,17 @@
           class="service-container service-card"
         >
           <div class="service-image">
-            <v-img
-              v-if="APIURL && item.image"
-              :src="APIURL + item.image.url"
-              :lazy-src="APIURL + item.image.url"
-            />
+            <v-lazy
+              :options="{
+                threshold: .5
+              }"
+            >
+              <v-img
+                v-if="item.image"
+                :src="item.image.url"
+                :lazy-src="item.image.url"
+              />
+            </v-lazy>
           </div>
           <div class="service-text">
             <div class="text-h6 pb-2 font-weight-bold">
@@ -61,7 +67,6 @@ export default {
   },
   data () {
     return {
-      APIURL: process.env.APIURL,
       model: 0
     }
   },
@@ -73,7 +78,7 @@ export default {
 
 <style scoped>
 .services {
-  padding: 5vh 0;
+  padding: 10vh 0 5vh;
 }
 .service-container {
   min-height: 30vh;
@@ -99,16 +104,16 @@ export default {
   transition-property: opacity;
 }
 .service-card:hover .text {
-  opacity: 100%;
+  opacity: 1;
 }
 .service-card {
-  opacity: 50%;
+  opacity: 0.5;
   color: rgba(0, 0, 0, 0.87);
   transition-duration: 1s;
   transition-property: opacity, background-color, opacity, border, box-shadow;
 }
 .service-card:hover {
-  opacity: 100%;
+  opacity: 1;
   background-color: #FFE500;
   border: 2px #FFF solid;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);

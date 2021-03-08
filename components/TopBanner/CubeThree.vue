@@ -4,12 +4,10 @@
 
 <script type="module">
 import * as THREE from 'three'
-import Stats from 'stats.js'
 export default {
   name: 'CubeThree',
   data () {
     return {
-      stats: Stats,
       cube: null,
       floor: null,
       cubeParticles: [],
@@ -20,7 +18,7 @@ export default {
       exploding: false,
       y: 1,
       particleSize: 1,
-      particleColour: 0xA5402D,
+      particleColour: 0xEC474C,
       particleSpeed: 10,
       dirs: [],
       limit: 300,
@@ -28,21 +26,20 @@ export default {
     }
   },
   mounted () {
-    this.init()
-    this.animate()
-    this.resizeCanvas()
+    setTimeout(() => {
+      this.init()
+      this.animate()
+      this.resizeCanvas()
+    }, 0)
   },
   methods: {
     init () {
-      this.stats = new Stats()
-      this.stats.showPanel(1)
-      document.body.appendChild(this.stats.dom)
       /** Scene setup */
       this.scene = new THREE.Scene()
       this.scene.background = new THREE.Color(0xFFF500)
       this.camera = new THREE.PerspectiveCamera(
         75,
-        window.innerWidth / (window.innerHeight * 7.5 / 10),
+        window.innerWidth / (window.innerHeight * 9 / 10),
         0.1,
         1000
       )
@@ -129,14 +126,12 @@ export default {
       this.scene.add(ambiLight)
     },
     animate () {
-      this.stats.begin()
       if (!this.exploding) {
         this.cube.rotation.x += 0.01
         this.cube.rotation.y += 0.01
       } else {
         this.explode(this.y)
       }
-      this.stats.end()
       requestAnimationFrame(this.animate)
       // this.composer.render(this.scene, this.camera)
       this.renderer.render(this.scene, this.camera)
@@ -179,7 +174,7 @@ export default {
     resizeCanvas () {
       window.addEventListener('resize', () => {
         const width = window.innerWidth
-        const height = window.innerHeight * 7.5 / 10
+        const height = window.innerHeight * 9 / 10
         this.camera.aspect = width / height
         this.renderer.setSize(width, height)
         this.renderer.setPixelRatio(window.devicePixelRatio)
@@ -192,9 +187,10 @@ export default {
 
 <style scoped>
 .sceneContainer {
-  height: 75vh;
+  height: 100%;
   width: fit-content;
   position: absolute;
   right: 0;
+  cursor: pointer;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div id="services">
-    <ServicesMobile v-if="isMobile" :items="items" />
-    <ServicesDesktop v-else :items="items" />
+    <keep-alive>
+      <ServicesMobile v-if="isMobile" :items="items" />
+      <ServicesDesktop v-else :items="items" />
+    </keep-alive>
   </div>
 </template>
 
@@ -22,12 +24,6 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      APIURL: process.env.APIURL,
-      model: 0
-    }
-  },
   computed: mapState([
     'isMobile'
   ])
@@ -37,5 +33,6 @@ export default {
 <style scoped>
 #services {
   width: 100%;
+  padding: 5vh 0;
 }
 </style>

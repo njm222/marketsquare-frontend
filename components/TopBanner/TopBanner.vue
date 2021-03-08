@@ -18,9 +18,9 @@
       </div>
       <div class="banner-quote">
         <v-img
-          v-if="landingQuoteIcon && APIURL"
-          :src="APIURL + landingQuoteIcon.url"
-          :lazy-src="APIURL + landingQuoteIcon.url"
+          v-if="landingQuoteIcon"
+          :src="landingQuoteIcon.url"
+          :lazy-src="landingQuoteIcon.url"
           width="36"
         />
         <v-carousel
@@ -31,7 +31,7 @@
         >
           <v-carousel-item v-for="quote in landingQuotes" :key="quote.id">
             <div class="quote">
-              "{{ quote.quoteText }}"
+              {{ quote.quoteText }}
             </div>
             <div class="quote-author">
               {{ quote.quoteAuthor }}
@@ -59,11 +59,6 @@ export default {
     },
     landingQuotes: Array
   },
-  data () {
-    return {
-      APIURL: process.env.APIURL
-    }
-  }
 }
 </script>
 
@@ -73,7 +68,7 @@ export default {
   background: #FFE500;
 }
 .banner-container {
-  min-height: 75vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -92,11 +87,13 @@ export default {
 }
 .banner-quote .quote {
   color: #000;
+  padding: 0 1em;
 }
 .banner-quote .quote-author {
   display: flex;
   justify-content: flex-end;
   font-weight: bold;
   color: #000;
+  padding: 0 1em;
 }
 </style>

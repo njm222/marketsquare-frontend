@@ -12,11 +12,17 @@
         <p class="banner-content" v-html="content" />
       </div>
       <div class="banner-image">
-        <v-img
-          v-if="image && this.APIURL"
-          :src="this.APIURL + image.url"
-          :lazy-src="this.APIURL + image.url"
-        />
+        <v-lazy
+          :options="{
+            threshold: .5
+          }"
+        >
+          <v-img
+            v-if="image"
+            :src="image.url"
+            :lazy-src="image.url"
+          />
+        </v-lazy>
       </div>
     </v-container>
   </div>
@@ -32,11 +38,6 @@ export default {
     image: {
       url: String
     }
-  },
-  data () {
-    return {
-      APIURL: process.env.APIURL
-    }
   }
 }
 </script>
@@ -44,11 +45,10 @@ export default {
 <style scoped>
 .banner {
   width: 100%;
-  height: 50vh;
 }
 .banner-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .banner-text {
   padding: 5vh 0;
@@ -61,7 +61,7 @@ export default {
   width: 40%;
 }
 .banner.right {
-  height: 35vh;
+  height: 40vh;
   background: #FFE500;
 }
 .banner-container.right {
@@ -73,6 +73,12 @@ export default {
 .banner-container.right .banner-image {
   width: 45%;
   margin-top: -10%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .banner.right {
+    height: 34vh;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -89,7 +95,7 @@ export default {
   .banner-text {
     padding: 0;
     width: 80%;
-    margin: -10% auto auto;
+    margin: -5% auto auto;
   }
 
   .banner-container .banner-image,

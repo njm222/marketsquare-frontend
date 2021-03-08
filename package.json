@@ -11,14 +11,17 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "lint-fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.10",
     "@nuxtjs/apollo": "^4.0.1-rc.1",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "axios": "^0.21.1",
     "core-js": "2",
     "graphql-tag": "^2.10.3",
+    "minify-css-string": "^1.0.0",
     "nuxt": "^2.13.0"
   },
   "devDependencies": {
@@ -26,6 +29,7 @@
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "^2.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
+    "@nuxtjs/google-fonts": "^1.2.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "@vue/test-utils": "^1.0.3",
     "babel-core": "7.0.0-bridge.0",
